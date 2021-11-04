@@ -1,27 +1,48 @@
-<template>
-  <div class="page__content">
-    <Sidebar />
-    <section class="page">
-      <MainHeader />
-      <MainBoard />
-    </section>
-    <overlay />
-  </div>
+<template lang="pug">
+.page__content
+  Sidebar(@showModal='showOverlay')
+  section(class="page")
+    MainHeader
+    TaskBorderCard
+      router-view
+
+  overlay(v-if='showModal' @hideModal='hideOverlay' :show='showAlert' @changeMessage='changeMessage')
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import MainHeader from '@/components/MainHeader/MainHeader.vue'
-import Sidebar from '@/components/Sidebar/SidebarContent.vue'
-import MainBoard from './components/Dashboard/MainBoard.vue'
+import MainHeader from '@/components/MainHeader.vue'
+import Sidebar from '@/components/Sidebar.vue'
+import Activity from '@/views/Activity.vue'
+import Tasks from '@/views/Tasks.vue'
+import TaskBorderCard from '@/components/TaskBorderCard.vue'
 import Overlay from './components/UI/Overlay.vue'
 
 export default defineComponent({
   components: {
     MainHeader,
     Sidebar,
-    MainBoard,
-    Overlay
+    Activity,
+    Tasks,
+    Overlay,
+    TaskBorderCard
+  },
+  data() {
+    return {
+      showModal: true,
+      showAlert: false
+    }
+  },
+  methods: {
+    showOverlay(visible: boolean) {
+      this.showModal = visible
+    },
+    hideOverlay(visible: boolean) {
+      this.showModal = visible
+    },
+    changeMessage(show: boolean) {
+      this.showAlert = show
+    }
   }
 })
 </script>

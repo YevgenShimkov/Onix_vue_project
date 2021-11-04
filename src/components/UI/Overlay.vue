@@ -1,10 +1,8 @@
-<template>
-  <section class="overlay">
-    <div class="backdrop hidden">
-      <ModalQuestion />
-      <ModalAlert />
-    </div>
-  </section>
+<template lang="pug">
+section(class="overlay")
+  .backdrop
+    ModalAlert(v-if='showAlert' @hideModal='hideModal')
+    ModalQuestion(v-else @hideModal='hideModal' @changeMessage='changeMessage')
 </template>
 
 <script lang="ts">
@@ -12,7 +10,21 @@ import { defineComponent } from 'vue'
 import ModalAlert from './ModalAlert.vue'
 import ModalQuestion from './ModalQuestion.vue'
 export default defineComponent({
-  components: { ModalAlert, ModalQuestion }
+  components: { ModalAlert, ModalQuestion },
+  props: {
+    showAlert: Boolean
+  },
+  data() {
+    return {}
+  },
+  methods: {
+    hideModal() {
+      this.$emit('hideModal', false)
+    },
+    changeMessage(show: boolean) {
+      this.$emit('changeMessage', show)
+    }
+  }
 })
 </script>
 

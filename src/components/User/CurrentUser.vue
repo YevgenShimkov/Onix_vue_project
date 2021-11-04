@@ -1,24 +1,14 @@
-<template>
-  <div class="user">
-    <div class="sidebar__container">
-      <div class="user__wrapper">
-        <div class="user__subwrapper">
-          <img src="@/assets/img/avatar/avatar_4.jpeg" alt="avatar" class="avatar" />
-          <div class="user__info">
-            <p class="user__name">Jean Gonzales</p>
-            <p class="user__position">Product Owner</p>
-          </div>
-        </div>
-        <a href="#" class="link link__additional">...</a>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+.user
+  .sidebar__container
+    .user__wrapper
+      .user__subwrapper
+        img(src="@/assets/img/avatar/avatar_4.jpeg" alt="avatar" class="avatar")
+        .user__info
+          p(class="user__name") Jean Gonzales
+          p(class="user__position") Product Owner
+      a(href="#" class="link link__additional") ...
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-export default defineComponent({})
-</script>
 
 <style lang="scss">
 .user {
