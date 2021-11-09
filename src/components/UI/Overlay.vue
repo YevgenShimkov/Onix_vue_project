@@ -1,8 +1,9 @@
 <template lang="pug">
-section(class="overlay")
+//-choose which modal window is displayed
+section.overlay
   .backdrop
-    ModalAlert(v-if='showAlert' @hideModal='hideModal')
-    ModalQuestion(v-else @hideModal='hideModal' @changeMessage='changeMessage')
+    modal-alert(v-if='showAlert' @hideModal='hideModal')
+    modal-question(v-else @hideModal='hideModal' @changeMessage='changeMessage')
 </template>
 
 <script lang="ts">
@@ -12,10 +13,9 @@ import ModalQuestion from './ModalQuestion.vue'
 export default defineComponent({
   components: { ModalAlert, ModalQuestion },
   props: {
-    showAlert: Boolean
-  },
-  data() {
-    return {}
+    showAlert: {
+      type: Boolean
+    }
   },
   methods: {
     hideModal() {

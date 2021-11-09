@@ -33,6 +33,7 @@ const tasks: TasksInterface[] = [
   }
 ]
 export default defineComponent({
+  name: 'Tasks',
   data() {
     return {
       mainTitle: 'today tasks',

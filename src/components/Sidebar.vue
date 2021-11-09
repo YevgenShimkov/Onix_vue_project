@@ -1,52 +1,43 @@
 <template lang="pug">
-section(class="sidebar")
+section.sidebar
   .header__sidebar
     .sidebar__container
       .header__wrapper
         .header__subwrapper
-          h2(class="title__sidebar") Projectus
-        a(href="#" class="search")
-  CurrentUser
+          h2.title__sidebar Projectus
+        a.search(href="#")
+  current-user
   .tasks
     .sidebar__container
       .tasks__wrapper
         .tasks__completed(@click='showModal')
-          a(href="#" class="link tasks__number") 372
+          a.link.tasks__number(href="#") 372
           .tasks__descr Completed Tasks
-
         .tasks__open
-          a(href="#" class="link tasks__number") 2
+          a.link.tasks__number(href="#") 9
           .tasks__descr Open Tasks
   .menu
     .sidebar__container
-      h2(class="title__menu") menu
-      ul(class="menu__nav")
-        li(class="menu__item")
-          a(href="#" class="link") Home
-        li(class="menu__item")
-          a(href="#" class="link") My Tasks
-        li(class="menu__item" id="notifications" data-after="")
-          a(href="#" class="link") Notifications
+      h2.title__menu menu
+      ul.menu__nav
+        li.menu__item
+          a.link(href="#") Home
+        li.menu__item
+          a.link(href="#") My Tasks
+        li.menu__item#notifications(data-after="")
+          a.link(href="#") Notifications
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import CurrentUser from '@/components/User/CurrentUser.vue'
 export default defineComponent({
+  name: 'Sidebar',
   components: { CurrentUser },
   methods: {
     showModal() {
       this.$emit('showModal', true)
     }
-    // deleteClasses(classes: string, parent: HTMLElement) {
-    //   parent.querySelectorAll('.' + classes).forEach(itm => {
-    //     itm.classList.remove(classes)
-    //   })
-    // },
-    // backdrop() {
-    //   const parent = document.querySelector('.overlay')
-    //   this.deleteClasses('hidden', parent as HTMLInputElement)
-    // }
   }
 })
 </script>

@@ -12,6 +12,21 @@ const routes: Array<RouteRecordRaw> = [
     component: Activity
   },
   {
+    path: '/kanban',
+    name: 'Kanban',
+    component: Activity
+  },
+  {
+    path: '/calendar',
+    name: 'Calendar',
+    component: Activity
+  },
+  {
+    path: '/files',
+    name: 'Files',
+    component: Activity
+  },
+  {
     path: '/tasks',
     name: 'Tasks',
     // route level code-splitting

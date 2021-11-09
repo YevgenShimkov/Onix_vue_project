@@ -1,24 +1,27 @@
 <template lang="pug">
-header(class="header")
+header.header
   .container
     .header__wrapper
       .header__logo
         .title__main Website Redesign
-        a(href="#" class="link circle circle_gray") ...
+        a.link.circle.circle_gray(href="#") ...
       .header__subwrapper.header__subwrapper_width
         .avatar__wrapper
-          a(v-for="usr in users" href="#" class="link" :key="usr.id")
-            img(class="avatar" :src="require('@/assets/img/avatar/' + usr.avatar)" :alt="usr.alt")
-        a(href="#" class="link circle__oval circle__oval_grey") Share
-        a(href="#" class="link circle__oval circle__oval_yellow") Chat
-    ul(class="header__nav")
-      router-link(to="/tasks" @click="changeActive")
-        li.header__nav_item Tasks
-      li(class="header__nav_item" @click="changeActive") Kanban
-      router-link(to="/" @click="changeActive")
-        li(class="header__nav_item header__nav_item_active") Activity
-      li(class="header__nav_item"  @click="changeActive") Calendar
-      li(class="header__nav_item" @click="changeActive") Files
+          a.link(v-for="usr in users" href="#" :key="usr.id")
+            img.avatar(:src="require('@/assets/img/avatar/' + usr.avatar)" :alt="usr.alt")
+        a.link.circle__oval.circle__oval_grey(href="#") Share
+        a.link.circle__oval.circle__oval_yellow(href="#") Chat
+    ul.header__nav
+      li
+        router-link.header__nav_item(to="/tasks") Tasks
+      li
+        router-link.header__nav_item(to="/kanban") Kanban
+      li
+        router-link.header__nav_item(to="/") Activity
+      li
+        router-link.header__nav_item(to="/calendar") Calendar
+      li
+        router-link.header__nav_item(to="/files") Files
 </template>
 
 <script lang="ts">
@@ -87,32 +90,21 @@ export default defineComponent({
       font-size: 16px;
       color: #131313;
       cursor: pointer;
-      &_active {
-        opacity: 1;
-        &::before {
-          position: absolute;
-          content: '';
-          width: 100%;
-          height: 2px;
-          bottom: -15px;
-          background-color: #ffc200;
-        }
-      }
     }
   }
 }
-// .router-link-exact-active {
-//   position: relative;
-//   opacity: 1;
-//   &::before {
-//     position: absolute;
-//     content: '';
-//     width: 100%;
-//     height: 2px;
-//     bottom: -15px;
-//     background-color: #ffc200;
-//   }
-// }
+.router-link-exact-active {
+  position: relative;
+  opacity: 1;
+  &::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 2px;
+    bottom: -15px;
+    background-color: #ffc200;
+  }
+}
 .circle {
   &__oval {
     width: 67px;

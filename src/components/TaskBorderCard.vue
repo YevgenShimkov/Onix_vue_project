@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'Card'
+  name: 'TaskBorderCard'
 }
 </script>
 

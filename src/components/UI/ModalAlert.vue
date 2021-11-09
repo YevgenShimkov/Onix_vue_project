@@ -1,9 +1,9 @@
 <template lang="pug">
 .modal.modal__alert
   .modal__close(@click='hideModal') x
-  h2(class="modal__title") There are no open tasks.
+  h2.modal__title There are no open tasks.
   .button__wrapper
-    button(class="button" @click='hideModal') OK
+    button.button(@click='hideModal') OK
 </template>
 
 <script lang="ts">

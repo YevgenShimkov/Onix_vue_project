@@ -14,6 +14,7 @@ h2.taskboard__title {{mainTitle}}
 <script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
+  name: 'Activity',
   data() {
     return {
       mainTitle: 'today',
