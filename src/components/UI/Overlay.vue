@@ -3,7 +3,7 @@
 section.overlay
   .backdrop
     modal-alert(v-if='showAlert' @hideModal='hideModal')
-    modal-question(v-else @hideModal='hideModal' @changeMessage='changeMessage')
+    modal-question(v-else @hideModal='hideModal' @changeTaskNumber = 'changeTaskNumber')
 </template>
 
 <script lang="ts">
@@ -21,8 +21,8 @@ export default defineComponent({
     hideModal() {
       this.$emit('hideModal', false)
     },
-    changeMessage(show: boolean) {
-      this.$emit('changeMessage', show)
+    changeTaskNumber() {
+      this.$emit('changeTaskNumber')
     }
   }
 })

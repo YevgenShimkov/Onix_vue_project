@@ -11,10 +11,10 @@ section.sidebar
     .sidebar__container
       .tasks__wrapper
         .tasks__completed(@click='showModal')
-          a.link.tasks__number(href="#") 372
+          a.link.tasks__number(href="#") {{tasks.completedTask}}
           .tasks__descr Completed Tasks
-        .tasks__open
-          a.link.tasks__number(href="#") 9
+        .tasks__open(@click='goTasks(tasks.openTasks)')
+          a.link.tasks__number(href="#") {{tasks.openTasks}}
           .tasks__descr Open Tasks
   .menu
     .sidebar__container
@@ -34,9 +34,22 @@ import CurrentUser from '@/components/User/CurrentUser.vue'
 export default defineComponent({
   name: 'Sidebar',
   components: { CurrentUser },
+  props: {
+    tasks: {
+      type: Object
+    }
+  },
+  data() {
+    return {}
+  },
   methods: {
     showModal() {
       this.$emit('showModal', true)
+    },
+    goTasks(numberOpenTask: number) {
+      if (numberOpenTask !== 0) {
+        this.$router.push('/')
+      }
     }
   }
 })

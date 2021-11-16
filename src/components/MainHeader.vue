@@ -17,7 +17,7 @@ header.header
       li
         router-link.header__nav_item(to="/kanban") Kanban
       li
-        router-link.header__nav_item(to="/") Activity
+        router-link.header__nav_item(to="/activity") Activity
       li
         router-link.header__nav_item(to="/calendar") Calendar
       li

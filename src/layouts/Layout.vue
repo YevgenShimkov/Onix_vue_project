@@ -1,11 +1,11 @@
 <template lang="pug">
 .page__content
-  sidebar(@showModal='showOverlay')
+  sidebar(@showModal='showOverlay' :tasks='tasks')
   section.page
     main-header
     task-border-card
       router-view
-  overlay(v-show='showModal' @hideModal='hideOverlay' :showAlert='showAlert' @changeMessage='changeMessage')
+  overlay(v-show='showModal' @hideModal='hideOverlay' :showAlert='showAlert' @changeTaskNumber='changeTaskNumber')
 </template>
 
 <script lang="ts">
@@ -25,7 +25,8 @@ export default defineComponent({
   data() {
     return {
       showModal: false,
-      showAlert: false
+      showAlert: false,
+      tasks: { id: 1, completedTask: 372, openTasks: 9 }
     }
   },
   methods: {
@@ -35,8 +36,17 @@ export default defineComponent({
     hideOverlay(visible: boolean) {
       this.showModal = visible
     },
-    changeMessage(show: boolean) {
-      this.showAlert = show
+    changeMessage() {
+      this.showAlert = true
+    },
+    changeTaskNumber() {
+      if (this.tasks.openTasks !== 0) {
+        this.tasks.completedTask = this.tasks.completedTask + 1
+        this.tasks.openTasks = this.tasks.openTasks - 1
+        if (this.tasks.openTasks === 0) {
+          this.changeMessage()
+        }
+      }
     }
   }
 })

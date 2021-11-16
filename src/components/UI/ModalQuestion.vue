@@ -17,25 +17,7 @@ export default defineComponent({
     },
     changeTaskNumber() {
       this.hideModal()
-      const completedTask: HTMLElement | null = document.querySelector('.tasks__completed')
-      const openTask = document.querySelector('.tasks__open')
-      if (Number(openTask?.firstElementChild?.textContent) > 0) {
-        // spike for typescript
-        if (
-          completedTask !== null &&
-          openTask !== null &&
-          completedTask.firstElementChild !== null &&
-          openTask.firstElementChild !== null
-        ) {
-          completedTask.firstElementChild.innerHTML = String(Number(completedTask.firstElementChild.textContent) + 1)
-          openTask.firstElementChild.innerHTML = String(Number(openTask.firstElementChild.textContent) - 1)
-        }
-      }
-      // edge case
-      // if there are no open tasks, then the displayed modal window changes
-      if (Number(openTask?.firstElementChild?.textContent) === 0) {
-        this.$emit('changeMessage', true)
-      }
+      this.$emit('changeTaskNumber')
     }
   }
 })

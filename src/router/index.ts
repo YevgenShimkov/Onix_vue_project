@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Activity from '@/views/Activity.vue'
+import Tasks from '@/views/Tasks.vue'
 
 /**
  * Вraw the main page through the component "component: Home"
@@ -8,31 +8,41 @@ import Activity from '@/views/Activity.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Activity',
-    component: Activity
-  },
-  {
-    path: '/kanban',
-    name: 'Kanban',
-    component: Activity
-  },
-  {
-    path: '/calendar',
-    name: 'Calendar',
-    component: Activity
-  },
-  {
-    path: '/files',
-    name: 'Files',
-    component: Activity
+    name: 'HOME',
+    redirect: { name: 'Tasks' }
   },
   {
     path: '/tasks',
     name: 'Tasks',
+    component: Tasks
+  },
+  {
+    path: '/activity',
+    name: 'Activity',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('@/views/Tasks.vue')
+    component: () => import('@/views/Activity.vue')
+  },
+  {
+    path: '/kanban',
+    name: 'Kanban',
+    component: () => import('@/views/Kanban.vue')
+  },
+  {
+    path: '/calendar',
+    name: 'Calendar',
+    component: () => import('@/views/Calendar.vue')
+  },
+  {
+    path: '/files',
+    name: 'Files',
+    component: () => import('@/views/Files.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'ErrorPage',
+    component: () => import('@/views/PageNotFound.vue')
   }
 ]
 
