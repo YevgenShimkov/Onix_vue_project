@@ -8,12 +8,6 @@ import Layout from '@/layouts/Layout.vue'
 export default defineComponent({
   components: {
     Layout
-  },
-  data() {
-    return {
-      showModal: false,
-      showAlert: false
-    }
   }
 })
 </script>

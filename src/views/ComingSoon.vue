@@ -1,16 +1,16 @@
 <template lang="pug">
 h1.taskboard__title {{mainTitle}}
 .taskborder__item
-  .taskborder__text No files
+  .taskborder__text ...
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'Files',
+  name: 'ComingSoon',
   data() {
     return {
-      mainTitle: 'Files'
+      mainTitle: 'Coming Soon'
     }
   }
 })

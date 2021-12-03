@@ -25,6 +25,9 @@ export default {
   &__item {
     margin-top: 30px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
   }
   &__content {
     width: 551px;
