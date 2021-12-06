@@ -62,7 +62,6 @@ export default defineComponent({
     addTask(task: TasksInterface) {
       this.tasks.push(task)
       this.closeForm()
-      console.log(this.tasks)
     },
     deleteTask(i: number) {
       this.tasks.splice(i, 1)

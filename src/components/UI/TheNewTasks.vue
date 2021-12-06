@@ -2,14 +2,13 @@
 form(@submit.prevent)
   h4.taskboard__title.taskboard__subtitle New task
   input.input(v-model="task.title" type="text" :class="{input__noValid: !titleIsValid}" placeholder="Title" @input='checkTitleValid' @blur='checkTitleValid')
-  //- span(v-show='!titleIsValid') Title
   .error__message(v-if='!titleIsValid') {{ErrorMessage.title}}
   textarea.input(v-model="task.description" type="text" :class="{input__noValid: !descriptionIsValid}" placeholder="Description" @input='checkDescrValid' @blur='checkDescrValid')
   .error__message(v-if='!descriptionIsValid') {{ErrorMessage.description}}
   input.input(v-model="task.term" type="text" :class="{input__noValid: !termIsValid}" placeholder="Deadline" @input='checkTermValid' @blur='checkTermValid')
   .error__message(v-if='!termIsValid') {{ErrorMessage.term}}
   .btn__wrapper
-    main-button(@click='addTask' :disabled="!isValid") Add
+    main-button(@click='addTask' :disabled="!checkIsValid") Add
     main-button(@click="$emit('closeForm')") Cancel
 </template>
 
@@ -32,35 +31,18 @@ export default defineComponent({
       }
     },
     checkTitleValid() {
-      if (this.task.title.length === 0) {
-        this.titleIsValid = false
-      } else {
-        this.titleIsValid = true
-      }
-      this.checkIsValid()
+      this.titleIsValid = !(this.task.title.length === 0)
     },
     checkDescrValid() {
-      if (this.task.description.length === 0) {
-        this.descriptionIsValid = false
-      } else {
-        this.descriptionIsValid = true
-      }
-      this.checkIsValid()
+      this.descriptionIsValid = !(this.task.description.length === 0)
     },
     checkTermValid() {
-      if (this.task.term.length === 0) {
-        this.termIsValid = false
-      } else {
-        this.termIsValid = true
-      }
-      this.checkIsValid()
-    },
-    checkIsValid() {
-      if (this.task.term.length !== 0 && this.task.description.length !== 0 && this.task.title.length !== 0) {
-        this.isValid = true
-      } else {
-        this.isValid = false
-      }
+      this.termIsValid = !(this.task.term.length === 0)
+    }
+  },
+  computed: {
+    checkIsValid(): boolean {
+      return this.task.term.length !== 0 && this.task.description.length !== 0 && this.task.title.length !== 0
     }
   },
   data() {
@@ -73,7 +55,7 @@ export default defineComponent({
       titleIsValid: true,
       descriptionIsValid: true,
       termIsValid: true,
-      isValid: false,
+      isValid: true,
       task: {
         id: 0,
         title: '',
