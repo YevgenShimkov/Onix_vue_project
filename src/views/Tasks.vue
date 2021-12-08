@@ -1,6 +1,6 @@
 <template lang="pug">
 h2.taskboard__title {{mainTitle}}
-.taskborder__item(v-for='(task,i) in tasks' :key="task.id")
+.taskborder__item(v-for='(task,i) in tasks' :key=`${"task.id"}`)
   .taskborder__content
     .taskboard__title.taskboard__subtitle {{task.title}}
     .taskborder__text {{ task.description }}

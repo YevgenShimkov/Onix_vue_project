@@ -1,11 +1,30 @@
 <template lang="pug">
 form(@submit.prevent)
   h4.taskboard__title.taskboard__subtitle New task
-  input.input(v-model="task.title" type="text" :class="{input__noValid: !titleIsValid}" placeholder="Title" @input='checkTitleValid' @blur='checkTitleValid')
+  input.input(
+    v-model="task.title"
+    type="text"
+    :class="{input__noValid: !titleIsValid}"
+    placeholder="Title"
+    @input='checkTitleValid'
+    @blur='checkTitleValid'
+  )
   .error__message(v-if='!titleIsValid') {{ErrorMessage.title}}
-  textarea.input(v-model="task.description" type="text" :class="{input__noValid: !descriptionIsValid}" placeholder="Description" @input='checkDescrValid' @blur='checkDescrValid')
+  textarea.input(
+    v-model="task.description"
+    type="text"
+    :class="{input__noValid: !descriptionIsValid}"
+    placeholder="Description"
+    @input='checkDescrValid'
+    @blur='checkDescrValid')
   .error__message(v-if='!descriptionIsValid') {{ErrorMessage.description}}
-  input.input(v-model="task.term" type="text" :class="{input__noValid: !termIsValid}" placeholder="Deadline" @input='checkTermValid' @blur='checkTermValid')
+  input.input(
+    v-model="task.term"
+    type="text"
+    :class="{input__noValid: !termIsValid}"
+    placeholder="Deadline"
+    @input='checkTermValid'
+    @blur='checkTermValid')
   .error__message(v-if='!termIsValid') {{ErrorMessage.term}}
   .btn__wrapper
     main-button(@click='addTask' :disabled="!checkIsValid") Add
