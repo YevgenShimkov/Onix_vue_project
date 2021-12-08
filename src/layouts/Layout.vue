@@ -1,25 +1,25 @@
 <template lang="pug">
 .page__content
-  sidebar(@showModal='showOverlay' :tasks='tasks')
+  the-sidebar(@showModal='showOverlay' :tasks='tasks')
   section.page
-    main-header
+    the-main-header
     task-border-card
       router-view
-  overlay(v-show='showModal' @hideModal='hideOverlay' :showAlert='showAlert' @changeTaskNumber='changeTaskNumber')
+  the-overlay(v-show='showModal' @hideModal='hideOverlay' :showAlert='showAlert' @changeTaskNumber='changeTaskNumber')
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import MainHeader from '@/components/MainHeader.vue'
-import Sidebar from '@/components/Sidebar.vue'
+import TheMainHeader from '@/components/TheMainHeader.vue'
+import TheSidebar from '@/components/TheSidebar.vue'
 import TaskBorderCard from '@/components/TaskBorderCard.vue'
-import Overlay from '@/components/UI/Overlay.vue'
+import TheOverlay from '@/components/UI/TheOverlay.vue'
 
 export default defineComponent({
   components: {
-    MainHeader,
-    Sidebar,
-    Overlay,
+    TheMainHeader,
+    TheSidebar,
+    TheOverlay,
     TaskBorderCard
   },
   data() {
