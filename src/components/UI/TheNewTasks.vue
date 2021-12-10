@@ -27,16 +27,16 @@ form(@submit.prevent)
     @blur='checkTermValid')
   .error__message(v-if='!termIsValid') {{ErrorMessage.term}}
   .btn__wrapper
-    main-button(@click='addTask' :disabled="!checkIsValid") Add
-    main-button(@click="$emit('closeForm')") Cancel
+    base-button(@click='addTask' :disabled="!checkIsValid") Add
+    base-button(@click="$emit('closeForm')") Cancel
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import MainButton from '@/components/UI/MainButton.vue'
+import BaseButton from '@/components/UI/BaseButton.vue'
 export default defineComponent({
   components: {
-    MainButton
+    BaseButton
   },
   methods: {
     addTask() {

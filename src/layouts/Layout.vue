@@ -3,7 +3,7 @@
   the-sidebar(@showModal='showOverlay' :tasks='tasks')
   section.page
     the-main-header
-    task-border-card
+    v-task-border-card
       router-view
   the-overlay(v-show='showModal' @hideModal='hideOverlay' :showAlert='showAlert' @changeTaskNumber='changeTaskNumber')
 </template>
@@ -12,7 +12,7 @@
 import { defineComponent } from 'vue'
 import TheMainHeader from '@/components/TheMainHeader.vue'
 import TheSidebar from '@/components/TheSidebar.vue'
-import TaskBorderCard from '@/components/TaskBorderCard.vue'
+import VTaskBorderCard from '@/components/VTaskBorderCard.vue'
 import TheOverlay from '@/components/UI/TheOverlay.vue'
 
 export default defineComponent({
@@ -20,7 +20,7 @@ export default defineComponent({
     TheMainHeader,
     TheSidebar,
     TheOverlay,
-    TaskBorderCard
+    VTaskBorderCard
   },
   data() {
     return {
