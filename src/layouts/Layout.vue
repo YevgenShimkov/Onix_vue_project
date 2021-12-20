@@ -170,17 +170,18 @@ export default defineComponent({
     }
     &__item {
       margin-top: 20px;
+      font-size: 14px;
     }
     &__content {
       width: 80%;
       padding-left: 10px;
     }
     &__time {
-      font-size: 12px;
+      // font-size: 12px;
     }
     &__text {
       width: 100%;
-      font-size: 14px;
+      // font-size: 14px;
     }
     &__comment {
       padding: 10px 15px;

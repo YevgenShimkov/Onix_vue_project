@@ -8,8 +8,8 @@ section.overlay
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import ModalAlert from './ModalAlert.vue'
-import ModalQuestion from './ModalQuestion.vue'
+import ModalAlert from '@/modal/ModalAlert.vue'
+import ModalQuestion from '@/modal/ModalQuestion.vue'
 export default defineComponent({
   components: { ModalAlert, ModalQuestion },
   props: {

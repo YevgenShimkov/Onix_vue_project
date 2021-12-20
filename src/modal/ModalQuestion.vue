@@ -3,7 +3,7 @@
   .modal__close(@click='hideModal') x
   h2.modal__title Are you sure you want to change the number of tasks?
   .button__wrapper
-    button.button(@click="changeTaskNumber") YES
+    button.button(@click='changeTaskNumber') YES
     button.button(@click='hideModal') NO
 </template>
 

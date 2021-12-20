@@ -23,6 +23,7 @@ export default {
     border-radius: 8px;
   }
   &__item {
+    font-size: 16px;
     margin-top: 30px;
     display: flex;
     align-items: center;
@@ -35,13 +36,13 @@ export default {
   }
   &__text {
     width: 461px;
-    font-size: 16px;
+    // font-size: 16px;
     color: #131313;
     line-height: 20px;
   }
   &__time {
     opacity: 0.7;
-    font-size: 14px;
+    // font-size: 14px;
     color: #131313;
     text-align: right;
     line-height: 20px;

@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import TheTasks from '@/views/TheTasks.vue'
+import Tasks from '@/views/Tasks.vue'
 import { routerNames } from '@/constant/RouteNames'
 
 /**
@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/tasks',
     name: routerNames.TASKS,
-    component: TheTasks
+    component: Tasks
   },
   {
     path: '/activity',
@@ -23,7 +23,7 @@ const routes: Array<RouteRecordRaw> = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('@/views/TheActivity.vue')
+    component: () => import('@/views/Activity.vue')
   },
   {
     path: '/kanban',

@@ -1,22 +1,23 @@
 <template lang="pug">
 h2.taskboard__title {{mainTitle}}
-.taskborder__item(v-for='(task,i) in tasks' :key=`${"task.id"}` )
+.taskborder__item(:ref='setItemRef' v-for='(task,i) in tasks' :key='`${task.id}`')
   .taskborder__content
     .taskboard__title.taskboard__subtitle {{task.title}}
-    .taskborder__text(:ref="setItemRef") {{ task.description }}
-  .taskborder__time.animated__text(:class="{'taskboard__achtung': task.additionalclass !=null}") {{ task.term }}
+    .taskborder__text {{ task.description }}
+    //- .taskborder__text(:ref='setItemRef') {{ task.description }}
+  .taskborder__time(:class="{'taskboard__achtung': task.additionalclass !=null}") {{ task.term }}
   //- main-button.btn__small(@click='deleteTask(task)') Done
   span(@click='deleteTask(i)')
-the-new-tasks(v-if='showForm' @closeForm='closeForm' @addTask= 'addTask')
+new-tasks(v-if='showForm' @closeForm='closeForm' @addTask= 'addTask')
 .btn__wrapper(v-else)
   base-button.btn__big(@click='show') Add tasks
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUpdated } from 'vue'
+import { defineComponent, onBeforeUpdate, onMounted, onUpdated } from 'vue'
 import { TasksInterface } from '@/types/tasks.interface'
 import BaseButton from '@/components/UI/BaseButton.vue'
-import TheNewTasks from '@/components/UI/TheNewTasks.vue'
+import NewTasks from '@/components/UI/NewTasks.vue'
 
 const tasks: TasksInterface[] = [
   {
@@ -40,18 +41,16 @@ const tasks: TasksInterface[] = [
   }
 ]
 
-const taskses: TasksInterface[] = []
-
 export default defineComponent({
   name: 'Tasks',
   components: {
     BaseButton,
-    TheNewTasks
+    NewTasks
   },
   data() {
     return {
       mainTitle: 'today tasks',
-      tasks: taskses,
+      tasks: [] as TasksInterface[],
       showForm: false
     }
   },
@@ -83,18 +82,22 @@ export default defineComponent({
   // },
   setup() {
     let numberOfTasks = 0
-    const itemRefs: HTMLElement[] = []
+    let itemRefs: HTMLElement[] = []
     const setItemRef = (el: HTMLElement) => {
-      if (!itemRefs.includes(el)) {
+      if (el) {
         itemRefs.push(el)
       }
     }
     onMounted(() => {
+      numberOfTasks = tasks.length
       itemRefs.forEach((el, index) => {
         setTimeout(() => {
           el.classList.add('animated__text')
         }, index * 500)
       })
+    })
+    onBeforeUpdate(() => {
+      itemRefs = []
     })
     onUpdated(() => {
       if ((numberOfTasks === 0 && tasks.length > 0) || numberOfTasks > tasks.length) {
@@ -104,6 +107,7 @@ export default defineComponent({
         numberOfTasks = tasks.length
         itemRefs[itemRefs.length - 1].classList.add('animated__text2')
       }
+      console.log(itemRefs)
     })
     return {
       setItemRef
@@ -144,13 +148,13 @@ span {
 }
 @keyframes example {
   0% {
-    transform: scale(1);
+    font-size: 100%;
   }
   50% {
-    transform: scale(1.03);
+    font-size: 105%;
   }
   100% {
-    transform: scale(1);
+    font-size: 100%;
   }
 }
 .animated__text {
