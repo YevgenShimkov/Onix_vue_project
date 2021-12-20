@@ -4,24 +4,24 @@ header.header
     .header__wrapper
       .header__logo
         .title__main Website Redesign
-        a.link.circle.circle_gray(href="#") ...
+        a.link.circle.circle_gray(href='#') ...
       .header__subwrapper.header__subwrapper_width
         .avatar__wrapper
-          a.link(v-for="usr in users" href="#" :key="usr.id")
-            img.avatar(:src="require('@/assets/img/avatar/' + usr.avatar)" :alt="usr.alt")
-        a.link.circle__oval.circle__oval_grey(href="#") Share
-        a.link.circle__oval.circle__oval_yellow(href="#") Chat
+          a.link(v-for='usr in users' href='#' :key='usr.id')
+            img.avatar(:src='require("@/assets/img/avatar/" + usr.avatar)' :alt='usr.alt')
+        a.link.circle__oval.circle__oval_grey(href='#') Share
+        a.link.circle__oval.circle__oval_yellow(href='#') Chat
     ul.header__nav
       li
-        router-link.header__nav_item(to="/tasks") Tasks
+        router-link.header__nav_item(to='/tasks') Tasks
       li
-        router-link.header__nav_item(to="/kanban") Kanban
+        router-link.header__nav_item(to='/kanban') Kanban
       li
-        router-link.header__nav_item(to="/activity") Activity
+        router-link.header__nav_item(to='/activity') Activity
       li
-        router-link.header__nav_item(to="/calendar") Calendar
+        router-link.header__nav_item(to='/calendar') Calendar
       li
-        router-link.header__nav_item(to="/files") Files
+        router-link.header__nav_item(to='/files') Files
 </template>
 
 <script lang="ts">

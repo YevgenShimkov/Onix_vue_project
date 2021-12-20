@@ -2,41 +2,41 @@
 form(@submit.prevent)
   h4.taskboard__title.taskboard__subtitle New task
   input.input(
-    v-model="task.title"
-    type="text"
-    :class="{input__noValid: !titleIsValid}"
-    placeholder="Title"
+    v-model='task.title'
+    type='text'
+    :class='{input__noValid: !titleIsValid}'
+    placeholder='Title'
     @input='checkTitleValid'
     @blur='checkTitleValid'
   )
   .error__message(v-if='!titleIsValid') {{ErrorMessage.title}}
   textarea.input(
-    v-model="task.description"
-    type="text"
-    :class="{input__noValid: !descriptionIsValid}"
-    placeholder="Description"
+    v-model='task.description'
+    type='text'
+    :class='{input__noValid: !descriptionIsValid}'
+    placeholder='Description'
     @input='checkDescrValid'
     @blur='checkDescrValid')
   .error__message(v-if='!descriptionIsValid') {{ErrorMessage.description}}
   input.input(
-    v-model="task.term"
-    type="text"
-    :class="{input__noValid: !termIsValid}"
-    placeholder="Deadline"
+    v-model='task.term'
+    type='text'
+    :class='{input__noValid: !termIsValid}'
+    placeholder='Deadline'
     @input='checkTermValid'
     @blur='checkTermValid')
   .error__message(v-if='!termIsValid') {{ErrorMessage.term}}
   .btn__wrapper
-    main-button(@click='addTask' :disabled="!checkIsValid") Add
-    main-button(@click="$emit('closeForm')") Cancel
+    base-button(@click='addTask' :disabled='!checkIsValid') Add
+    base-button(@click='$emit("closeForm")') Cancel
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import MainButton from '@/components/UI/MainButton.vue'
+import BaseButton from '@/components/UI/BaseButton.vue'
 export default defineComponent({
   components: {
-    MainButton
+    BaseButton
   },
   methods: {
     addTask() {

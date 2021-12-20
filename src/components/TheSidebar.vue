@@ -5,27 +5,27 @@ section.sidebar
       .header__wrapper
         .header__subwrapper
           h2.title__sidebar Projectus
-        a.search(href="#")
+        a.search(href='#')
   current-user
   .tasks
     .sidebar__container
       .tasks__wrapper
         .tasks__completed(@click='showModal')
-          a.link.tasks__number(href="#") {{tasks.completedTask}}
+          a.link.tasks__number(href='#') {{tasks.completedTask}}
           .tasks__descr Completed Tasks
         .tasks__open(@click='goTasks(tasks.openTasks)')
-          a.link.tasks__number(href="#") {{tasks.openTasks}}
+          a.link.tasks__number(href='#') {{tasks.openTasks}}
           .tasks__descr Open Tasks
   .menu
     .sidebar__container
       h2.title__menu menu
       ul.menu__nav
         li.menu__item
-          a.link(href="#") Home
+          a.link(href='#') Home
         li.menu__item
-          a.link(href="#") My Tasks
-        li.menu__item#notifications(data-after="")
-          a.link(href="#") Notifications
+          a.link(href='#') My Tasks
+        li.menu__item#notifications(data-after='')
+          a.link(href='#') Notifications
 </template>
 
 <script lang="ts">
